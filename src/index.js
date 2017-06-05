@@ -6,17 +6,15 @@ import {
     Switch,
     Route
 } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import App from './App';
-import { createStore } from 'redux';
-import reducer from './reducers/index';
 
-const store = createStore(reducer);
+// Refactor for Redux if time - must wrap BrowserRouter with Provider store
+// import { Provider } from 'react-redux';
+// import { createStore } from 'redux';
+// import reducer from './reducers/index';
+
+// const store = createStore(reducer);
 
 ReactDOM.render((
-    <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Provider>
+        <App />
     ), document.getElementById('root'));

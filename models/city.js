@@ -7,7 +7,15 @@ var reckSchema = new Schema ({
   address: String,
   description: String,
   votecount: Number,
-  comments: [String]
+  comments: [commentSchema],
+  created: { type: Date, default: Date.now }
+});
+
+var commentSchema = new Schema ({
+  googleID: String,
+  name: String,
+  comment: String,
+  created: { type: Date, default: Date.now }
 })
 
 var eventSchema = new Schema ({

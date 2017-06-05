@@ -3,6 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
 
@@ -13,12 +14,12 @@ var app = express();
 require('./config/database');
 require('./config/passport');
 
-var userRoutes = require('./routes/index');
+var authRoutes = require('./routes/auth');
+var apiRoutes = require('./routes/api');
 
 app.use(logger('dev'));
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
-app.use(express.static(path.join(__dirname, 'build')));
-// app.use(cookieParser());
+app.use(cookieParser());
 app.use(session({
    secret: 'ReckedLife',
    resave: false,
@@ -28,9 +29,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // User & API Routes
-app.use('/', userRoutes);
-// app.use('/api', apiRoutes);
+app.use('/', authRoutes);
+app.use('/api', apiRoutes);
 
+app.use(express.static(path.join(__dirname, 'build')));
 //Client-side Route Catchall ???? need to send {user: req.user}
 app.get('/*', function(req, res){
     res.sendFile(path.join(__dirname, 'build', 'index.html'));

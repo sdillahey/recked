@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import TopNav from './components/TopNav';
 
 class App extends Component {
   render() {
     return (
       <div>
-        Recked
-        SideNav
-        Login
+        <TopNav />
       </div>
     );
   }
