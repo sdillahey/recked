@@ -15,7 +15,16 @@ class CitiesPage extends Component {
     cityClick = (idx) => {
         this.setState({city: this.state.cities[idx]})
     }
+/*--
+    upVote = (idx) => {
+        this.setState{{city.data.recks[idx].votecount}: ++ 1}
+    }
 
+    downVote = (idx) => {
+        this.setState{{city.data.recks[idx].votecount}: ++ 1}
+    }
+--*/
+    
     componentDidMount() {
         //will need to update to provide the search results - not all cities
         fetch(`/api/cities`)

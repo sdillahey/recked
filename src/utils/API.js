@@ -1,5 +1,21 @@
+
 // hit API based on search bar search
-//does city, country, continent, region include search result
+//does city, country, continent include the search result?
+function APIsearch(string) {
+    fetch('/api/cities', {
+        method: 'get'
+    }).then(data => data.json())
+    .then(cities => {
+        let resultCities = cities.filter(city => {
+            return (
+                city.city.toLowerCase().includes(string) ||
+                city.country.toLowerCase().includes(string) ||
+                city.continent.toLowerCase().includes(string)
+            );
+        })
+    })
+    
+}
 
 //hit API based on sidenav selection
 //if C .. must include C
@@ -15,3 +31,7 @@
 
 
 //find user boards, return find user and return user.boards
+
+export default {
+    APIsearch
+};

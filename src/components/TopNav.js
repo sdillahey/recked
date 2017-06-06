@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from '../utils/API';
 
 class TopNav extends Component {
     constructor() {
@@ -9,8 +10,10 @@ class TopNav extends Component {
     handleSearchChange = val => this.setState({search: val.toLowerCase()})
 
    //NEED TO CHANGE
-    handleSearchResult = () => {
-        return this.state.search;
+    handleSearchResult = (e) => {
+        e.preventDefault();
+        API.APIsearch(this.state.search);
+        this.setState({search: ""});
     }
 
 
@@ -24,6 +27,7 @@ class TopNav extends Component {
                     <form className="navbar-form navbar-right">
                         <div className="form-group">
                             <input type="text" onChange={(e) => this.handleSearchChange(e.target.value)} className="form-control" placeholder="Search City, Country or Region" />
+                            <button onSubmit={(e) => this.handleSearchResult(e)} className="btn btn-default btn-xs">Submit</button>
                         </div>
                     </form>
                 </div>
