@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import CitiesList from '../components/CitiesList';
 import CityPage from './CityPage';
 
@@ -10,6 +10,10 @@ class CitiesPage extends Component {
             cities: [],
             city: {}
         }
+    }
+
+    cityClick = (idx) => {
+        this.setState({city: this.state.cities[idx]})
     }
 
     componentDidMount() {
@@ -23,10 +27,21 @@ class CitiesPage extends Component {
     render() {
         return(
             <div>
-                <Route exact path='/places/:cityurl' render={() =>
-                    <CityPage />
-                }/>
-                <CitiesList cities={this.state.cities} />
+                <div className="container">
+                    <div className="row">
+                        <Switch>
+                            <Route exact path='/places' render={() =>
+                                <CitiesList 
+                                    cityClick={this.cityClick}
+                                    cities={this.state.cities}
+                                />
+                            }/>
+                            <Route path='/places/:cityurl' render={() =>
+                                <CityPage city={this.state.city}/>
+                            }/>
+                        </Switch>
+                    </div>
+                </div>
             </div>
         )
     };

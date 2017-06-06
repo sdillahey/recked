@@ -1,14 +1,12 @@
 var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var reckSchema = new Schema ({
+var boardreckSchema = new Schema ({
   name: String,
   image: String,
   address: String,
   description: String,
-  votecount: Number,
-  comments: [commentSchema],
-  created: { type: Date, default: Date.now }
+  type: {type: String, enum:["activity", "restaurant", "bar", "nightclub", "museum & culture", "hotel"]}
 });
 
 var eventSchema = new Schema ({
@@ -23,7 +21,7 @@ var boardSchema = new Schema({
   city: String,
   image: String,
   data: {
-        recks: [reckSchema],
+        recks: [boardreckSchema],
         events: [eventSchema],
         nextstops: [String],
         reqreading: [String],

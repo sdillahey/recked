@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 
 class TopNav extends Component {
+    constructor() {
+        super();
+        this.state = {search: ""}
+    }
+
+    handleSearchChange = val => this.setState({search: val.toLowerCase()})
+
+   //NEED TO CHANGE
+    handleSearchResult = () => {
+        return this.state.search;
+    }
 
 
     render() {
@@ -12,7 +23,7 @@ class TopNav extends Component {
                     </div>
                     <form className="navbar-form navbar-right">
                         <div className="form-group">
-                            <input type="text" className="form-control" placeholder="Search City, Country or Region" />
+                            <input type="text" onChange={(e) => this.handleSearchChange(e.target.value)} className="form-control" placeholder="Search City, Country or Region" />
                         </div>
                     </form>
                 </div>

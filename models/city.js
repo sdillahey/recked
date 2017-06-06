@@ -1,5 +1,12 @@
 var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
+var commentSchema = new Schema ({
+  googleID: String,
+  name: String,
+  comment: String,
+  created: { type: Date, default: Date.now }
+});
  
 var reckSchema = new Schema ({
   name: String,
@@ -9,13 +16,6 @@ var reckSchema = new Schema ({
   type: {type: String, enum:["activity", "restaurant", "bar", "nightclub", "museum & culture", "hotel"]},
   votecount: Number,
   comments: [commentSchema],
-  created: { type: Date, default: Date.now }
-});
-
-var commentSchema = new Schema ({
-  googleID: String,
-  name: String,
-  comment: String,
   created: { type: Date, default: Date.now }
 });
 

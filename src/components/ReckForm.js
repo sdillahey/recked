@@ -23,10 +23,13 @@ class ReckForm extends Component {
     }
 
     handleSubmit = () => {
+        e.preventDefault();
         let newReck = {};
         newReck.name = this.state.name;
         newReck.address = this.state.address;
         newReck.description = this.state.description;
+        //push the newReck into the props.city.data.recks array
+        })
     }
 
     return (

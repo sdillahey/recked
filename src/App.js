@@ -23,11 +23,8 @@ class App extends Component {
             <Route exact path='/' render={() =>
               <LandingPage />
             }/>
-            <Route exact path='/places' render={() =>
+            <Route path='/places' render={() =>
               <CitiesPage />
-            }/>
-            <Route exact path='/places/:cityurl' render={() =>
-              <CityPage />
             }/>
             <Route exact path='/reckedlists' render={() =>
               <ReckedBoard />

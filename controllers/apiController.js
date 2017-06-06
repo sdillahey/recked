@@ -16,7 +16,7 @@ function allCities(req, res) {
 }
 
 function findCity(req, res) {
-  City.findOne('cityurl': req.params.cityurl, function(err, city){
+  City.findOne({'cityurl': req.params.cityurl}, function(err, city){
     if (err) return res.status(500).json({msg: err});
     res.status(200).json(city);
   });
