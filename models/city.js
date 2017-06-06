@@ -16,16 +16,17 @@ var commentSchema = new Schema ({
   name: String,
   comment: String,
   created: { type: Date, default: Date.now }
-})
+});
 
 var eventSchema = new Schema ({
   name: String,
   month: { type: Number, enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
   blurb: String
-})
+});
 
 var citySchema = new Schema({
     city: String,
+    cityurl: String,
     country: String,
     continent: String,
     region: [String],
@@ -41,6 +42,7 @@ var citySchema = new Schema({
         nextstops: [String],
         reqreading: [String],
         transportation: [String],
+        neighborhoods: [String],
         needtoknow: [String]
     }
  });
