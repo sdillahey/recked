@@ -22,10 +22,8 @@ var boardSchema = new Schema({
   user: [String],
   city: String,
   image: String,
-  recs: {
-        activities: [reckSchema],
-        restaurants: [reckSchema],
-        hotels: [reckSchema],
+  data: {
+        recks: [reckSchema],
         events: [eventSchema],
         nextstops: [String],
         reqreading: [String],

@@ -6,6 +6,7 @@ var reckSchema = new Schema ({
   image: String,
   address: String,
   description: String,
+  type: {type: String, enum:["activity", "restaurant", "bar", "nightclub", "museum & culture", "hotel"]},
   votecount: Number,
   comments: [commentSchema],
   created: { type: Date, default: Date.now }
@@ -33,10 +34,9 @@ var citySchema = new Schema({
     tags: [String],
     heximg: String,
     img: String,
-    recs: {
-        activities: [reckSchema],
-        restaurants: [reckSchema],
-        hotels: [reckSchema],
+    data: {
+        spotlights: [reckSchema],
+        recks: [reckSchema],
         instagram: [String],
         events: [eventSchema],
         nextstops: [String],

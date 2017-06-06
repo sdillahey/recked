@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
+import CitiesList from '../components/CitiesList';
+import CityPage from './CityPage';
 
 class CitiesPage extends Component {
     constructor(props) {
@@ -11,22 +13,20 @@ class CitiesPage extends Component {
     }
 
     componentDidMount() {
-        //will need to update with search results
+        //will need to update to provide the search results - not all cities
         fetch(`/api/cities`)
             .then(res => res.json())
             .then(cities => this.setState({cities}));
     }
 
+        //will need to update to initiate a fetch request if the link was hit through the url ie. no props
     render() {
         return(
-            <div className="col-md-8">
-                {this.state.cities.map(city => (
-                    <Link to={`/places/${city.cityurl}`}>
-                         <div className="col-md-3">
-                            <img src={city.hexurl} alt={city.name} />
-                        </div>
-                    </ Link>
-                 ))}
+            <div>
+                <Route exact path='/places/:cityurl' render={() =>
+                    <CityPage />
+                }/>
+                <CitiesList cities={this.state.cities} />
             </div>
         )
     };

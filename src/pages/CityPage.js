@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class CityPage extends Component {
     constructor(props) {
         super(props);
-        this.state.city = {};
     }
 
     componentDidMount() {
