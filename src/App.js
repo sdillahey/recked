@@ -24,6 +24,11 @@ class App extends Component {
       this.setState({city: this.state.cities[idx]})
   }
 
+  setFetchedCity = (city) => {
+    this.setState({city: city});
+    console.log('state', this.state.city)
+  }
+
   setCities = (cities) => {
       this.setState({cities})
   }
@@ -38,6 +43,7 @@ class App extends Component {
             <Route path='/places' render={() =>
               <CitiesPage 
                 setCity={this.setCity}
+                setFetchedCity={this.setFetchedCity}
                 setCities={this.setCities}
                 cities={this.state.cities}
                 city={this.state.city}/>

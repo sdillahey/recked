@@ -9,19 +9,25 @@ class CityPage extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.city) {
-            fetch(`/api/cities/${this.props.params.cityurl}`)
+        if (!Object.keys(this.props.city).length) {
+            fetch(`/api/cities/${this.props.match.match.params.cityurl}`)
                 .then(res => res.json())
-                .then(city => this.setState({city}));
+                .then(city => {
+                    this.props.setFetchedCity(city)
+            });
         }
+        
     }
-
 
     render() {
         return (
              <Switch>
-                <Route exact path='/places/:cityurl' render={() =>
-                    <div className="col-md-8 col-md-offset-2">
+                <Route exact path='/places/:cityurl' render={() => {
+                    if (!Object.keys(this.props.city).length) {
+                        return <p>Loading...</p>
+                    } else {
+                        return (
+                        <div className="col-md-8 col-md-offset-2">
                         <h1>{this.props.city.city}</h1>
                         <div className="row">
                             <h3>Spotlight:</h3>
@@ -33,6 +39,9 @@ class CityPage extends Component {
                         </div>
                         <Link to={`/places/${this.props.city.cityurl}/new`}>Add a Reck</Link>
                     </div>
+                        )
+                    }
+                    }
                 }/>
                 <Route path='/places/:cityurl/new' render={() =>
                     <ReckForm />

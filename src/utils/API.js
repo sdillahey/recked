@@ -21,6 +21,24 @@ function APIsearch(string) {
 //if A .. must include A
 // otherwise _ || _ || _
 
+//do i want array to be full of true falses in position or include the selected values
+function APIfilter(array) {
+    return fetch('/api/cities')
+    .then(data => data.json())
+    .then(cities => {
+        let prioritySearch = [];
+        if (array.includes('A') && array.includes('C')) {
+           prioritySearch = cities.filter(city => city.tags.includes('A' && 'C'));
+        } else if (array.includes('A')) {
+            return prioritySearch = cities.filter(city => city.tags.includes('A'));
+        } else if (array.includes('C')) {
+            return prioritySearch = cities.filter(city => city.tags.includes('C'));
+        }
+        return prioritySearch.length ? prioritySearch
+            : cities.filter(city => city.tags.includes())
+    })
+}
+
 //Add a new Reck
 //push newReck into the city's data.recks & save the city
 
@@ -32,5 +50,6 @@ function APIsearch(string) {
 //find user boards, return find user and return user.boards
 
 export default {
-    APIsearch
+    APIsearch,
+    APIfilter
 };

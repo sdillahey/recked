@@ -43,8 +43,11 @@ class CitiesPage extends Component {
                                     cities={this.props.cities}
                                 />
                             }/>
-                            <Route path='/places/:cityurl' render={() =>
-                                <CityPage city={this.props.city}/>
+                            <Route path='/places/:cityurl' render={(match) =>
+                                <CityPage 
+                                    city={this.props.city}
+                                    setFetchedCity={this.props.setFetchedCity}
+                                    match={match}/>
                             }/>
                         </Switch>
                     </div>
