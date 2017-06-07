@@ -22,6 +22,10 @@ function findCity(req, res) {
   });
 }
 
+function addCityReck(req, res) {
+  
+}
+
 // To display a user's board for a city
 function showReckList(req, res) {
     //or can I just do getUser.. res.boards
