@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import API from '../utils/API';
+import { Link } from 'react-router-dom';
 
 class TopNav extends Component {
     constructor() {
@@ -9,11 +10,14 @@ class TopNav extends Component {
 
     handleSearchChange = val => this.setState({search: val.toLowerCase()})
 
-   //NEED TO CHANGE
     handleSearchResult = (e) => {
         e.preventDefault();
-        API.APIsearch(this.state.search);
-        this.setState({search: ""});
+        API.APIsearch(this.state.search)
+            .then(cities => {
+                this.props.setCities(cities);
+                this.setState({search: ""});
+                // change 'view' to /places using the history object
+            })
     }
 
 
@@ -24,11 +28,17 @@ class TopNav extends Component {
                     <div className="nav navbar-nav navbar-right">
                         <li><a href="/auth/google">Login</a></li>
                     </div>
-                    <form className="navbar-form navbar-right">
+                    <form onSubmit={this.handleSearchResult} className="navbar-form navbar-right">
                         <div className="form-group">
-                            <input type="text" onChange={(e) => this.handleSearchChange(e.target.value)} className="form-control" placeholder="Search City, Country or Region" />
-                            <button onSubmit={(e) => this.handleSearchResult(e)} className="btn btn-default btn-xs">Submit</button>
+                            <input 
+                                type="text" 
+                                onChange={(e) => this.handleSearchChange(e.target.value)} 
+                                className="form-control" 
+                                placeholder="Search by City, Country or Region" 
+                                value={this.state.search}
+                                style={{"width": "300"}} />
                         </div>
+                        <button type="submit" className="btn btn-default btn-sm">Search</button>
                     </form>
                 </div>
             </nav>

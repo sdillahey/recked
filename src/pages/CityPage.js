@@ -17,7 +17,7 @@ class CityPage extends Component {
 
     render() {
         return (
-            <div className="col-md-8">
+            <div className="col-md-8 col-md-offset-2">
                 <h1>{this.props.city.city}</h1>
                 <div className="row">
                     <h3>Spotlight:</h3>

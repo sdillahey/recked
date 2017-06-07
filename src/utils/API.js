@@ -2,11 +2,10 @@
 // hit API based on search bar search
 //does city, country, continent include the search result?
 function APIsearch(string) {
-    fetch('/api/cities', {
-        method: 'get'
-    }).then(data => data.json())
+    return fetch('/api/cities')
+    .then(data => data.json())
     .then(cities => {
-        let resultCities = cities.filter(city => {
+        return cities.filter(city => {
             return (
                 city.city.toLowerCase().includes(string) ||
                 city.country.toLowerCase().includes(string) ||

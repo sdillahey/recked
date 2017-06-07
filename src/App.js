@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import TopNav from './components/TopNav';
 import {
     BrowserRouter,
     Link,
@@ -13,18 +12,35 @@ import ReckedBoard from './pages/ReckedBoard';
 import ReckedList from './pages/ReckedList';
 
 class App extends Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        cities: [],
+        city: {}
+    };
+  }
+
+  setCity = (idx) => {
+      this.setState({city: this.state.cities[idx]})
+  }
+
+  setCities = (cities) => {
+      this.setState({cities})
+  }
 
   render() {
     return (
-      <div>
-        <TopNav />
         <BrowserRouter>
           <Switch>
             <Route exact path='/' render={() =>
               <LandingPage />
             }/>
             <Route path='/places' render={() =>
-              <CitiesPage />
+              <CitiesPage 
+                setCity={this.setCity}
+                setCities={this.setCities}
+                cities={this.state.cities}
+                city={this.state.city}/>
             }/>
             <Route exact path='/reckedlists' render={() =>
               <ReckedBoard />
@@ -34,7 +50,6 @@ class App extends Component {
             }/>
           </Switch>
         </BrowserRouter>
-      </div>
     );
   }
 }
