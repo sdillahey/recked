@@ -9,9 +9,6 @@ function getUser(req, res) {
 }
 
 function allCities(req, res) {
-
-console.log('allcitites', req.user)
-
   City.find({}, function(err, cities){
     if (err) return res.status(500).json({msg: err});
     res.status(200).json(cities);
@@ -26,7 +23,6 @@ function findCity(req, res) {
 }
 
 function loggedInUser(req, res){
-  console.log('me', req.user)
   res.json(req.user);
 }
 
@@ -46,14 +42,20 @@ function showReckList(req, res) {
     //or can I just do getUser.. res.boards
 }
 
-// To 
+function updateVote(req, res) {
+  City.findOneAndUpdate({'cityurl': req.params.cityurl}, {'data.recks': req.body}, function(err, city) {
+        if (err) return res.status(500).json({msg: err});
+        res.json(city);
+  })
+}
 
 const apiController = {
     getUser,
     allCities,
     findCity,
     loggedInUser,
-    addCityReck
+    addCityReck, 
+    updateVote
 }
 
 module.exports = apiController;

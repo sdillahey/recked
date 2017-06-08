@@ -9,17 +9,6 @@ class CitiesPage extends Component {
     constructor(props) {
         super(props);
     }
-
-
-/*--
-    upVote = (idx) => {
-        this.setState{{city.data.recks[idx].votecount}: ++ 1}
-    }
-
-    downVote = (idx) => {
-        this.setState{{city.data.recks[idx].votecount}: ++ 1}
-    }
---*/
     
     componentDidMount() {
         //will need to update to provide the search results - not all cities
@@ -34,9 +23,8 @@ class CitiesPage extends Component {
         return(
             <div>
                 <TopNav 
-                    setCities={this.props.setCities}/>
-                <div className="container">
-                    <div className="row">
+                    setCities={this.props.setCities}
+                    user={this.props.user}/>
                         <Switch>
                             <Route exact path='/places' render={() =>
                                 <CitiesList 
@@ -51,8 +39,6 @@ class CitiesPage extends Component {
                                     match={match}/>
                             }/>
                         </Switch>
-                    </div>
-                </div>
             </div>
         )
     };

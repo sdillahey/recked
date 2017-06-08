@@ -21,7 +21,7 @@ class CityPage extends Component {
     render() {
         return (
              <Switch>
-                <Route exact path='/places/:cityurl' render={() => {
+                <Route exact path='/places/:cityurl' render={(props) => {
                     if (!Object.keys(this.props.city).length) {
                         return <p>Loading...</p>
                     } else {
@@ -29,12 +29,12 @@ class CityPage extends Component {
                         <div className="col-md-8 col-md-offset-2">
                         <h1>{this.props.city.city}</h1>
                         <div className="row">
-                            <h3>Spotlight:</h3>
-                            <ReckDisplay recks={this.props.city.data.spotlights}/>
-                        </div>
-                        <div className="row">
                             <h3>Take it to the Streets...</h3>
-                            <ReckDisplay recks={this.props.city.data.recks}/>
+                            <ReckDisplay 
+                                recks={this.props.city.data.recks}
+                                city={this.props.city}
+                                setFetchedCity={this.props.setFetchedCity}
+                                {...props}/>
                         </div>
                         <Link to={`/places/${this.props.city.cityurl}/new`}>Add a Reck</Link>
                         <Link to={'/places'}>Back to Search</Link>

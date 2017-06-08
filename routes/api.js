@@ -8,5 +8,6 @@ router.get('/me', apiController.loggedInUser);
 router.get('/cities', apiController.allCities);
 router.get('/cities/:cityurl', apiController.findCity);
 router.post('/cities/:cityurl', apiController.addCityReck);
+router.put('/cities/:cityurl', apiController.updateVote);
 
 module.exports = router;

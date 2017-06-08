@@ -50,7 +50,7 @@ class ReckForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <h3>Name:</h3>
                 <input type="text" onChange={this.updateName} value={this.state.name}/>
                 <h3>Address:</h3>

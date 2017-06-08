@@ -10,7 +10,7 @@
   router.get('/oauth2callback', passport.authenticate(
    'google',
    {
-     successRedirect : '/',
+     successRedirect : '/places',
      failureRedirect : '/'
    }
  ));
