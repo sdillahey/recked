@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import CitiesList from '../components/CitiesList';
 import TopNav from '../components/TopNav';
+import SideNav from '../components/SideNav';
 import CityPage from './CityPage';
 
 class CitiesPage extends Component {

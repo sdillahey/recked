@@ -16,7 +16,6 @@ class CityPage extends Component {
                     this.props.setFetchedCity(city)
             });
         }
-        
     }
 
     render() {
@@ -45,7 +44,7 @@ class CityPage extends Component {
                     }
                 }/>
                 <Route path='/places/:cityurl/new' render={(props) =>
-                    <ReckForm {...props}/>
+                    <ReckForm {...props} city={this.props.city.city}/>
                 }/>
             </Switch>
         );

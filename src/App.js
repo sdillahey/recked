@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   setFetchedCity = (city) => {
-    console.log('state', this.state.city)
+    this.setState({city});
   }
 
   setCities = (cities) => {

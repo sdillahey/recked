@@ -1,0 +1,16 @@
+.navbar-default {
+  padding: 10px;
+  background: #73c0ad;
+
+}
+
+.navbar-nav>li>a {
+    font-size: 26px;
+    font-family: 'Patrick Hand SC', cursive;
+    color: white;
+}
+
+input {
+      font-family: 'Sue Ellen Francisco', cursive;
+      font-size: larger;
+}

@@ -33,3 +33,13 @@
 .bm-overlay {
   background: rgba(20, 18, 27, 0.2);
 }
+
+span {
+  font-family: 'Patrick Hand SC', cursive;
+  font-size: 1.3em;
+}
+
+div.btn {
+  font-family: 'Patrick Hand SC', cursive;
+  font-size: x-large;
+}

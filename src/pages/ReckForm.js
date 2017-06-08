@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class ReckForm extends Component {
     constructor(props) {
@@ -68,6 +69,8 @@ class ReckForm extends Component {
                 <br />
                 <br />
                 <button className="btn btn-default" onClick={this.handleSubmit}>Add Reck</button>
+                <br />
+                <Link to={`/places/${this.props.match.params.cityurl}`}>Return to Recks</ Link>
             </div>
         )
     }
