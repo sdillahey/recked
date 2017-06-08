@@ -6,6 +6,7 @@ class ReckForm extends Component {
         this.state = {
             name: "",
             address: "",
+            type: "activity",
             description: ""
         }
     }
@@ -22,14 +23,27 @@ class ReckForm extends Component {
         this.setState({description: e.target.value})
     }
 
+    handleType = (e) => {
+        this.setState({type: e.target.value})
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         let newReck = {};
         newReck.name = this.state.name;
         newReck.address = this.state.address;
-        newReck.type = //HOW
+        newReck.type = this.state.type;
+        newReck.votecount = 0;
         newReck.description = this.state.description;
-        //push the newReck into the props.city.data.recks array
+        fetch(`/api/cities/${this.props.match.params.cityurl}`, {
+            method: 'POST',
+            headers: new Headers({'Content-Type': 'application/json'}),
+            body: JSON.stringify(newReck)
+        }).then(res => {
+            this.props.history.push(`/places/${this.props.match.params.cityurl}`);
+        }).catch(err => {
+            console.log('err ', err)
+        })
     }
 
 
@@ -41,13 +55,13 @@ class ReckForm extends Component {
                 <h3>Address:</h3>
                 <input type="text" onChange={this.updateAddress} value={this.state.address}/>
                 <h3>Type:</h3>
-                <select  id="type">
-                    <option>activity</option>
-                    <option>restaurant</option>
-                    <option>bar</option>
-                    <option>nightclub</option>
-                    <option>museum &amp; culture</option>
-                    <option>hotel</option>
+                <select value={this.state.type} onChange={this.handleType} id="type">
+                    <option value="activity">activity</option>
+                    <option value="restaurant">restaurant</option>
+                    <option value="bar">bar</option>
+                    <option value="nightclub">nightclub</option>
+                    <option value="museum & culture">museum &amp; culture</option>
+                    <option value="hotel">hotel</option>
                 </select>
                 <h3>Description:</h3>
                 <textarea className="form-control" style={{"width": 300}} rows="4" onChange={this.updateDescription} value={this.state.description}/>

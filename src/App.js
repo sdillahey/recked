@@ -25,7 +25,6 @@ class App extends Component {
   }
 
   setFetchedCity = (city) => {
-    this.setState({city: city});
     console.log('state', this.state.city)
   }
 
@@ -33,12 +32,20 @@ class App extends Component {
       this.setState({cities})
   }
 
+  componentDidMount() {
+    fetch('/api/me')
+    .then(res => res.json())
+    .then(user => this.setState({user}))
+  }
+
   render() {
     return (
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' render={() =>
-              <LandingPage />
+            <Route exact path='/' render={(props) =>
+              <LandingPage 
+                setCities={this.setCities}
+                {...props}/>
             }/>
             <Route path='/places' render={() =>
               <CitiesPage 

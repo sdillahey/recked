@@ -3,6 +3,7 @@ import { stack as Menu } from 'react-burger-menu';
 import './SideNav.css';
 import { MorphIcon } from 'react-svg-buttons';
 import API from '../utils/API';
+import { Link } from 'react-router-dom';
 
 /*-- needs pagewrapid and containerwrapid if using scale down --*/
 
@@ -15,21 +16,27 @@ class SideNav extends Component {
   }
 
   toggleCheck = (e) => {
-    let prevState = this.state.checked.slice();
-    let newState = e.target.checked ? prevState.push(e.target.value) : 
-    prevState.splice(prevState.indexOf(e.target.value), 1)
+    var prevState = this.state.checked.slice();
+    if (e.target.checked) {
+      prevState.push(e.target.value);
+      var newState = prevState;
+    } else {
+      prevState.splice(prevState.indexOf(e.target.value), 1);
+      var newState = prevState;
+    }
     this.setState({checked: newState})
   }
 
   filterCities = (e) => {
     e.preventDefault();
     API.APIfilter(this.state.checked)
-            .then(cities => {
-                this.props.setCities(cities);
-                this.setState({checked: []});
-                // change 'view' to /places using the history object
-            })
-    }
+        .then(cities => {
+            this.props.setCities(cities);
+            this.setState({checked: []});
+            this.props.history.push('/places');
+        })
+  }
+    
 
 
   render () {
@@ -63,7 +70,7 @@ class SideNav extends Component {
                 <span><input className="searchbox" type="checkbox" name="search-1" value="C" onClick={this.toggleCheck}/>
                 &nbsp;&nbsp;Passport Mandatory</span>
                 <br />
-        <button className="btn btn-default btn-md" onClick={ this.filterCities }>&amp; We're Off</button>
+          <div className="btn btn-default btn-md" onClick={ this.filterCities }>&amp; We're Off</div>
       </Menu>
     );
   }

@@ -4,7 +4,7 @@ import SideNav from '../components/SideNav';
 const LandingPage = (props) => {
     return (
         <div >
-            <SideNav  />
+            <SideNav {...props} setCities={props.setCities} />
             <div id="page-wrap" style={{"text-align": "center"}}>
                 Recked
             </div>

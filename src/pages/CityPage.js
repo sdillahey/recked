@@ -38,13 +38,14 @@ class CityPage extends Component {
                             <ReckDisplay recks={this.props.city.data.recks}/>
                         </div>
                         <Link to={`/places/${this.props.city.cityurl}/new`}>Add a Reck</Link>
+                        <Link to={'/places'}>Back to Search</Link>
                     </div>
                         )
                     }
                     }
                 }/>
-                <Route path='/places/:cityurl/new' render={() =>
-                    <ReckForm />
+                <Route path='/places/:cityurl/new' render={(props) =>
+                    <ReckForm {...props}/>
                 }/>
             </Switch>
         );

@@ -17,11 +17,13 @@ require('./config/passport');
 var authRoutes = require('./routes/auth');
 var apiRoutes = require('./routes/api');
 
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(logger('dev'));
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
-app.use(cookieParser());
-app.use(session({
-   secret: 'ReckedLife',
+app.use(bodyParser.json());
+app.use(cookieParser('ReckedLife'));
+app.use(session({   
+    secret: 'ReckedLife',
    resave: false,
    saveUninitialized: true
  }));
@@ -32,7 +34,6 @@ app.use(passport.session());
 app.use('/', authRoutes);
 app.use('/api', apiRoutes);
 
-app.use(express.static(path.join(__dirname, 'build')));
 //Client-side Route Catchall ???? need to send {user: req.user}
 app.get('/*', function(req, res){
     res.sendFile(path.join(__dirname, 'build', 'index.html'));

@@ -35,7 +35,7 @@ function APIfilter(array) {
             return prioritySearch = cities.filter(city => city.tags.includes('C'));
         }
         return prioritySearch.length ? prioritySearch
-            : cities.filter(city => city.tags.includes())
+            : cities.filter(city => city.tags.some((tag) => array.includes(tag)))
     })
 }
 
