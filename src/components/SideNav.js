@@ -41,7 +41,7 @@ class SideNav extends Component {
 
   render () {
     return (
-      <Menu pageWrapId={ "page-wrap" } customCrossIcon={<MorphIcon type="crossSparks" size={30} thickness={4} color="#e93737"/>}>
+      <Menu customCrossIcon={<MorphIcon type="crossSparks" size={30} thickness={4} color="#e93737"/>}>
         <h3>Who's Going?</h3>
                 <span><input className="searchbox" type="checkbox" name="search-1" value="1" onClick={this.toggleCheck}/>
                 &nbsp;&nbsp;Girls' Getaway</span>

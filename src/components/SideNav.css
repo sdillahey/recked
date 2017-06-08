@@ -36,10 +36,17 @@
 
 span {
   font-family: 'Patrick Hand SC', cursive;
-  font-size: 1.3em;
+  font-size: 1.4em;
 }
 
 div.btn {
-  font-family: 'Patrick Hand SC', cursive;
+  font-family: 'Hind', sans-serif;
   font-size: x-large;
+  margin: 15px;
 }
+
+h3 {
+  font-family: 'Hind', sans-serif;
+  font-size: 30px;
+}
+

@@ -43,7 +43,7 @@ function showReckList(req, res) {
 }
 
 function updateVote(req, res) {
-  City.findOneAndUpdate({'cityurl': req.params.cityurl}, {'data.recks': req.body}, function(err, city) {
+  City.findOneAndUpdate({'cityurl': req.params.cityurl}, {'data.recks': req.body}, {'new': true}, function(err, city) {
         if (err) return res.status(500).json({msg: err});
         res.json(city);
   })
