@@ -33,6 +33,7 @@ See the Wireframes and User Stories: [Trello](https://trello.com/b/AalYVjba/reck
 ### Challenges Faced:  
 - While implementing OAuth in a SPA, there were complications accessing the user data. Learned that the user is not included implicitly in the request when using Fetch.  
 - Navigating throughout nested routes and redirecting within React while using React Router. Ended up using the history object as well as window.location.
+- Handling for a user navigating via the URI to a nested route. Typically the componenet would be passed down state, but in these scenarios I handled the unavailable data by making an AJAX request for the necessary data.
 
 ### Upcoming Features:
 - GoogleMaps API Integration
