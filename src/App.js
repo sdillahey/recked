@@ -49,6 +49,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={(props) =>
               <LandingPage 
+                user={this.state.user}
                 setCities={this.setCities}
                 {...props}/>
             }/>

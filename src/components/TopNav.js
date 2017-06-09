@@ -23,13 +23,13 @@ class TopNav extends Component {
 
 
     render() {
-        let nav = this.props.user ? <li><a href="/reckedlists">My ReckLists</a></li> : 
-                    <li><a href="/auth/google">Login</a></li>
+        let nav = this.props.user ? <li className="topnav-login"><a href="/reckedlists">My ReckLists</a></li> : 
+                    <li className="topnav-login"><a href="/auth/google">Login</a></li>
 
         return (
             <nav className="navbar navbar-default">
                 <div className="container-fluid">
-                    <div className="nav navbar-nav navbar-right">
+                    <div className="nav navbar-nav navbar-right topnav">
                         {nav}
                     </div>
                     <form onSubmit={this.handleSearchResult} className="navbar-form navbar-right">

@@ -37,17 +37,18 @@ class CityPage extends Component {
                                 setFetchedCity={this.props.setFetchedCity}
                                 {...props}/>
                         </div>
-                        <Link className="btn" to={`/places/${this.props.city.cityurl}/new`}>Add a Reck</Link>
-                        <Link className="btn" to={'/places'}>Back to Search</Link>
+                        <div className="city-buttons">
+                        <Link to={'/places'}><button className="btn btn-default citybtn">Back to Search</button></Link>
+                        <Link to={`/places/${this.props.city.cityurl}/new`}><button className="btn btn-default citybtn" >Add a Reck</button></Link>
+                        </div>
                     </div>
                         )
                     }
                     }
                 }/>
                 <Route path='/places/:cityurl/new' render={(props) =>
-                    {this.props.user ?
-                    <ReckForm {...props} city={this.props.city.city}/> :
-                    <Redirect to='/auth/google' />}
+                    {if (this.props.user) <ReckForm {...props} city={this.props.city.city}/>
+                    else props.history.push('/auth/google')}
                 }/>
             </Switch>
         );

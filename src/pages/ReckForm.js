@@ -70,7 +70,7 @@ class ReckForm extends Component {
                 <br />
                 <button className="btn btn-default" onClick={this.handleSubmit}>Add Reck</button>
                 <br />
-                <Link to={`/places/${this.props.match.params.cityurl}`}>Return to Recks</ Link>
+                <Link to={`/places/${this.props.match.params.cityurl}`}><button className="btn btn-default">Return to Recks</button></ Link>
             </div>
         )
     }
