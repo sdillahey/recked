@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReckDisplay from '../components/ReckDisplay';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import ReckForm from './ReckForm';
 
 class CityPage extends Component {
@@ -36,15 +36,17 @@ class CityPage extends Component {
                                 setFetchedCity={this.props.setFetchedCity}
                                 {...props}/>
                         </div>
-                        <Link to={`/places/${this.props.city.cityurl}/new`}>Add a Reck</Link>
-                        <Link to={'/places'}>Back to Search</Link>
+                        <Link className="btn" to={`/places/${this.props.city.cityurl}/new`}>Add a Reck</Link>
+                        <Link className="btn" to={'/places'}>Back to Search</Link>
                     </div>
                         )
                     }
                     }
                 }/>
                 <Route path='/places/:cityurl/new' render={(props) =>
-                    <ReckForm {...props} city={this.props.city.city}/>
+                    {this.props.user ?
+                    <ReckForm {...props} city={this.props.city.city}/> :
+                    <Redirect to='/auth/google' />}
                 }/>
             </Switch>
         );

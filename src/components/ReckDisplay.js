@@ -10,15 +10,11 @@ class ReckDisplay extends Component {
 
 
 
-    upVote = (idx) => {
-        let currentCount = this.props.recks[idx].votecount;
-        let newCount = ++currentCount;
-        let updatedRecks = this.props.recks.slice();
-        updatedRecks[idx].votecount = newCount;
-        fetch(`/api/cities/${this.props.match.params.cityurl}`, {
+    upVote = (id) => {
+        fetch(`/api/cities/${this.props.match.params.cityurl}/${id}`, {
             method: 'PUT',
+            body: JSON.stringify({upvote: true}),
             headers: new Headers({'Content-Type': 'application/json'}),
-            body: JSON.stringify(updatedRecks)
         }).then(data => {
            return data.json()
             
@@ -29,15 +25,11 @@ class ReckDisplay extends Component {
         })
     }
 
-    downVote = (idx) => {
-        let currentCount = this.props.recks[idx].votecount
-        let newCount = --currentCount;
-        let updatedRecks = this.props.recks.slice();
-        updatedRecks[idx].votecount = newCount;
-        fetch(`/api/cities/${this.props.match.params.cityurl}`, {
+    downVote = (id) => {
+        fetch(`/api/cities/${this.props.match.params.cityurl}/${id}`, {
             method: 'PUT',
+            body: JSON.stringify({upvote: false}),
             headers: new Headers({'Content-Type': 'application/json'}),
-            body: JSON.stringify(updatedRecks)
         }).then(data => {
            return data.json()
             
@@ -59,7 +51,7 @@ class ReckDisplay extends Component {
                                 <div className="caption">
                                     <h2>{reck.name}</h2>
                                     <p>{reck.description}</p>
-                                    <div style={{"text-align": "center"}}><span style={{'cursor': 's-resize'}} onClick={() => this.downVote(idx)}>&nbsp;&dArr;&nbsp;&nbsp;</span>{reck.votecount}<span style={{'cursor': 'n-resize'}} onClick={() => this.upVote(idx)}>&nbsp;&nbsp;&uArr;&nbsp;</span></div>
+                                    <div style={{"text-align": "center"}}><span style={{'cursor': 's-resize'}} onClick={() => this.downVote(reck._id)}>&nbsp;&dArr;&nbsp;&nbsp;</span>{reck.votecount}<span style={{'cursor': 'n-resize'}} onClick={() => this.upVote(reck._id)}>&nbsp;&nbsp;&uArr;&nbsp;</span></div>
                                 </div>
                             </div>
                     ))}

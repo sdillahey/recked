@@ -22,7 +22,7 @@ function findCity(req, res) {
   });
 }
 
-function loggedInUser(req, res){
+function checkForUser(req, res){
   res.json(req.user);
 }
 
@@ -43,9 +43,14 @@ function showReckList(req, res) {
 }
 
 function updateVote(req, res) {
-  City.findOneAndUpdate({'cityurl': req.params.cityurl}, {'data.recks': req.body}, {'new': true}, function(err, city) {
+  City.findOne({'cityurl': req.params.cityurl}, function(err, city) {
+      let reck = city.data.recks.id(req.params.id)
+      console.log('body', req.body, req.json);
+      reck.votecount = req.body.upvote ? ++reck.votecount: --reck.votecount;
+      city.save(err => {
         if (err) return res.status(500).json({msg: err});
         res.json(city);
+      })
   })
 }
 
@@ -53,7 +58,7 @@ const apiController = {
     getUser,
     allCities,
     findCity,
-    loggedInUser,
+    checkForUser,
     addCityReck, 
     updateVote
 }

@@ -36,7 +36,8 @@ class CitiesPage extends Component {
                                 <CityPage 
                                     city={this.props.city}
                                     setFetchedCity={this.props.setFetchedCity}
-                                    match={match}/>
+                                    match={match}
+                                    user={this.props.user}/>
                             }/>
                         </Switch>
             </div>
