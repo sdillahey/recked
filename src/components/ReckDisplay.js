@@ -11,7 +11,7 @@ class ReckDisplay extends Component {
 
 
     upVote = (id) => {
-        if (!this.props.user) return;
+        if (!this.props.user) return window.location.pathname='/auth/google';
         fetch(`/api/cities/${this.props.match.params.cityurl}/${id}`, {
             method: 'PUT',
             body: JSON.stringify({upvote: true, user: this.props.user._id}),
@@ -27,7 +27,7 @@ class ReckDisplay extends Component {
     }
 
     downVote = (id) => {
-        if (!this.props.user) return;
+        if (!this.props.user) return window.location.pathname='/auth/google';
         fetch(`/api/cities/${this.props.match.params.cityurl}/${id}`, {
             method: 'PUT',
             body: JSON.stringify({upvote: false, user: this.props.user._id}),

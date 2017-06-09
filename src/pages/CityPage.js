@@ -19,6 +19,8 @@ class CityPage extends Component {
     }
 
     render() {
+        let self = this;
+        
         return (
              <Switch>
                 <Route exact path='/places/:cityurl' render={(props) => {
@@ -39,7 +41,8 @@ class CityPage extends Component {
                         </div>
                         <div className="city-buttons">
                         <Link to={'/places'}><button className="btn btn-default citybtn">Back to Search</button></Link>
-                        <Link to={`/places/${this.props.city.cityurl}/new`}><button className="btn btn-default citybtn" >Add a Reck</button></Link>
+                        {(this.props.user) ? <Link to={`/places/${this.props.city.cityurl}/new`}><button className="btn btn-default citybtn" >Add a Reck</button></Link> :
+                        <Link to={`/places/${this.props.city.cityurl}/new`}><button className="btn btn-default citybtn" disabled>Add a Reck</button></Link>}
                         </div>
                     </div>
                         )
@@ -47,8 +50,7 @@ class CityPage extends Component {
                     }
                 }/>
                 <Route path='/places/:cityurl/new' render={(props) =>
-                    {if (this.props.user) <ReckForm {...props} city={this.props.city.city}/>
-                    else props.history.push('/auth/google')}
+                   <ReckForm {...props} user={this.props.user} city={this.props.city.city}/>
                 }/>
             </Switch>
         );

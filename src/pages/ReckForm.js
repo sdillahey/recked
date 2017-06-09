@@ -46,7 +46,10 @@ class ReckForm extends Component {
             console.log('err ', err)
         })
     }
-
+ 
+    componentDidMount() {
+        if (!this.props.user) window.location.pathname="/auth/google";
+    }
 
     render() {
         return (
