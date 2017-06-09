@@ -44,10 +44,10 @@ function showReckList(req, res) {
 
 function updateVote(req, res) {
   City.findOne({'cityurl': req.params.cityurl}, function(err, city) {
-      let reck = city.data.recks.id(req.params.id)
-      if (reck.uservotes.includes(req.params.userid)) return;
+      let reck = city.data.recks.id(req.params.reckid)
+      if (reck.uservotes.includes(req.body.user)) return;
       reck.votecount = req.body.upvote ? ++reck.votecount: --reck.votecount;
-      reck.uservotes.push(req.params.userid);
+      reck.uservotes.push(req.body.user);
       city.save(err => {
         if (err) return res.status(500).json({msg: err});
         res.json(city);

@@ -8,6 +8,7 @@
 
 # production
 # /build
+/seeds.js
 
 # misc
 .DS_Store
