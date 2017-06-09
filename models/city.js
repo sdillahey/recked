@@ -15,6 +15,7 @@ var reckSchema = new Schema ({
   description: String,
   type: {type: String, enum:["activity", "restaurant", "bar", "nightclub", "museum & culture", "hotel"]},
   votecount: Number,
+  uservotes: [String],
   comments: [commentSchema],
   created: { type: Date, default: Date.now }
 });

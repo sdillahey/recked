@@ -31,6 +31,7 @@ class CityPage extends Component {
                         <div className="row">
                             <h3>Take it to the Streets...</h3>
                             <ReckDisplay 
+                                user={this.props.user}
                                 recks={this.props.city.data.recks}
                                 city={this.props.city}
                                 setFetchedCity={this.props.setFetchedCity}

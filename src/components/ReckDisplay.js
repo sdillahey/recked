@@ -11,7 +11,7 @@ class ReckDisplay extends Component {
 
 
     upVote = (id) => {
-        fetch(`/api/cities/${this.props.match.params.cityurl}/${id}`, {
+        fetch(`/api/cities/${this.props.match.params.cityurl}/${id}/${this.props.user._id}`, {
             method: 'PUT',
             body: JSON.stringify({upvote: true}),
             headers: new Headers({'Content-Type': 'application/json'}),
@@ -26,7 +26,7 @@ class ReckDisplay extends Component {
     }
 
     downVote = (id) => {
-        fetch(`/api/cities/${this.props.match.params.cityurl}/${id}`, {
+        fetch(`/api/cities/${this.props.match.params.cityurl}/${id}/${this.props.user._id}`, {
             method: 'PUT',
             body: JSON.stringify({upvote: false}),
             headers: new Headers({'Content-Type': 'application/json'}),

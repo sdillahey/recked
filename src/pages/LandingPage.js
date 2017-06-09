@@ -8,13 +8,13 @@ const LandingPage = (props) => {
         <nav className="navbar">
             <ul className="nav navbar-nav navbar-right">
                 <Link to="">
-                <li><a href="#">My ReckLists</a></li>
+                <li><a className="stampnav" href="#">My ReckLists</a></li>
                 </Link>
             </ul>
         </nav> :
     <nav className="navbar">
         <ul className="nav navbar-nav navbar-right">
-            <li><a href="/auth/google">Login</a></li>
+            <li><a className="stampnav" href="/auth/google">Login</a></li>
         </ul>
     </nav>
     return (
