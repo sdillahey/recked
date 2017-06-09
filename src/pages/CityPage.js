@@ -42,7 +42,7 @@ class CityPage extends Component {
                         <div className="city-buttons">
                         <Link to={'/places'}><button className="btn btn-default citybtn">Back to Search</button></Link>
                         {(this.props.user) ? <Link to={`/places/${this.props.city.cityurl}/new`}><button className="btn btn-default citybtn" >Add a Reck</button></Link> :
-                        <Link to={`/places/${this.props.city.cityurl}/new`}><button className="btn btn-default citybtn" disabled>Add a Reck</button></Link>}
+                        <button className="btn btn-default citybtn" disabled>Add a Reck</button>}
                         </div>
                     </div>
                         )
