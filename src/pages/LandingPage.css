@@ -12,11 +12,13 @@
     color: #73c0ad
 }
 
-.stampnav>li>a:hover {
-    background-color: transparent;
+.main-nav {
+  background-color: transparent;
+  box-shadow: none;
 }
 
-.stampnav>li>a {
+
+.stampnav {
   color: black;
   padding: 20px;
   margin-top: 10px;

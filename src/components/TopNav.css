@@ -1,16 +1,19 @@
-.navbar-default {
-  padding: 10px;
+.topnav {
   background: #73c0ad;
 
 }
 
 .topnav>li>a {
-    font-size: 22px;
     font-family: 'Hind', sans-serif;
-    color: white !important;
 }
 
-input {
+
+
+#search {
     font-family: 'Hind', sans-serif;
-      font-size: larger;
+
+}
+
+.rightnav {
+  margin-bottom: 0;
 }

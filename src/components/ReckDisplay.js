@@ -8,8 +8,6 @@ class ReckDisplay extends Component {
         super(props);
     }
 
-
-
     upVote = (id) => {
         if (!this.props.user) return window.location.pathname='/auth/google';
         fetch(`/api/cities/${this.props.match.params.cityurl}/${id}`, {
@@ -49,11 +47,12 @@ class ReckDisplay extends Component {
             <div>
                 <StackGrid columnWidth={300} gutterWidth={25} easing={easings.quadOut}>
                     {this.props.recks.map((reck, idx)=> (
-                            <div className="thumbnail" key={idx}>
-                                <div className="caption">
-                                    <h2>{reck.name}</h2>
+                            <div className="card" key={idx}>
+                                <div className="card-content">
+                                    <span className="card-title">{reck.name}</span>
                                     <p>{reck.description}</p>
                                     <div style={{"text-align": "center"}}><span style={{'cursor': 's-resize'}} onClick={() => this.downVote(reck._id)}>&nbsp;&dArr;&nbsp;&nbsp;</span>{reck.votecount}<span style={{'cursor': 'n-resize'}} onClick={() => this.upVote(reck._id)}>&nbsp;&nbsp;&uArr;&nbsp;</span></div>
+                                    <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
                                 </div>
                             </div>
                     ))}

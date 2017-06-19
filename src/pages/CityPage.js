@@ -50,7 +50,11 @@ class CityPage extends Component {
                     }
                 }/>
                 <Route path='/places/:cityurl/new' render={(props) =>
-                   <ReckForm {...props} user={this.props.user} city={this.props.city.city}/>
+                   <ReckForm 
+                    {...props} 
+                    user={this.props.user} 
+                    city={this.props.city.city}
+                    setFetchedCity={this.props.setFetchedCity}/>
                 }/>
             </Switch>
         );

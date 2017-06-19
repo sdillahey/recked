@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import API from '../utils/API';
 import './TopNav.css';
 import { Link } from 'react-router-dom';
+import { Navbar, NavItem } from 'react-materialize';
 
 class TopNav extends Component {
     constructor() {
@@ -23,32 +24,33 @@ class TopNav extends Component {
 
 
     render() {
-        let nav = this.props.user ? <li className="topnav-login"><a href="/reckedlists">My ReckLists</a></li> : 
-                    <li className="topnav-login"><a href="/auth/google">Login</a></li>
+        let navlink = this.props.user ? <NavItem href="/reckedlists">My ReckLists</NavItem> : 
+                    <NavItem href="/auth/google">Login</NavItem>
 
         return (
-            <nav className="navbar navbar-default">
-                <div className="container-fluid">
-                    <div className="nav navbar-nav navbar-right topnav">
-                        {nav}
+            <Navbar right className="topnav">
+                <div className="row rightnav">
+                    <div className="col s7">
+                        <form onSubmit={this.handleSearchResult}>
+                            <div className="input-field">
+                                <label className="label-icon" for="search"><i className="material-icons">search</i></label>
+                                <input
+                                    required 
+                                    id="search"
+                                    type="search" 
+                                    onChange={(e) => this.handleSearchChange(e.target.value)} 
+                                    value={this.state.search}
+                                    />
+                            </div>
+                        </form>
                     </div>
-                    <form onSubmit={this.handleSearchResult} className="navbar-form navbar-right">
-                        <div className="form-group">
-                            <input 
-                                type="text" 
-                                onChange={(e) => this.handleSearchChange(e.target.value)} 
-                                className="form-control" 
-                                placeholder="Search by City, Country or Region" 
-                                value={this.state.search}
-                                style={{"width": "300"}} />
-                        </div>
-                        <button type="submit" className="btn btn-default btn-sm">Search</button>
-                    </form>
+                    <div className="col s5">
+                        {navlink}
+                    </div>
                 </div>
-            </nav>
+            </Navbar>
         );
     }
-
 };
 
 export default TopNav;

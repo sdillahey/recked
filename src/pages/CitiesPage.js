@@ -11,14 +11,12 @@ class CitiesPage extends Component {
     }
     
     componentDidMount() {
-        //will need to update to provide the search results - not all cities
         if (!this.props.cities.length)
             fetch(`/api/cities`)
                 .then(res => res.json())
                 .then(cities => this.props.setCities(cities));
     }
 
-        //will need to update to initiate a fetch request if the link was hit through the url ie. no props
     render() {
         return(
             <div>

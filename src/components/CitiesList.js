@@ -8,6 +8,7 @@ class CitiesList extends Component {
     render() {   
         return (
             <div className="row">
+                <br/>
                     <StackGrid columnWidth={300} gutterWidth={25} easing={easings.quadOut}>
                         {this.props.cities.map((city, idx) => (
                             <Link to={`/places/${city.cityurl}`} key={city.cityurl}>

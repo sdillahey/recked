@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {Row, Input} from 'react-materialize';
 
 class ReckForm extends Component {
     constructor(props) {
@@ -40,7 +41,9 @@ class ReckForm extends Component {
             method: 'POST',
             headers: new Headers({'Content-Type': 'application/json'}),
             body: JSON.stringify(newReck)
-        }).then(res => {
+        }).then(res => res.json())
+            .then(city => {
+            this.props.setFetchedCity(city);
             this.props.history.push(`/places/${this.props.match.params.cityurl}`);
         }).catch(err => {
             console.log('err ', err)
@@ -53,27 +56,37 @@ class ReckForm extends Component {
 
     render() {
         return (
-            <div className="container">
-                <h3>Name:</h3>
-                <input type="text" onChange={this.updateName} value={this.state.name}/>
-                <h3>Address:</h3>
-                <input type="text" onChange={this.updateAddress} value={this.state.address}/>
-                <h3>Type:</h3>
-                <select value={this.state.type} onChange={this.handleType} id="type">
-                    <option value="activity">activity</option>
-                    <option value="restaurant">restaurant</option>
-                    <option value="bar">bar</option>
-                    <option value="nightclub">nightclub</option>
-                    <option value="museum & culture">museum &amp; culture</option>
-                    <option value="hotel">hotel</option>
-                </select>
-                <h3>Description:</h3>
-                <textarea className="form-control" style={{"width": 300}} rows="4" onChange={this.updateDescription} value={this.state.description}/>
+            <div className="row container">
+                <div className="col s12 m6">
+                    <div className="input-field">
+                        <input type="text" onChange={this.updateName} value={this.state.name} id="name"/>
+                        <label for="name">Name</label>
+                    </div>
+                    <div className="input-field">
+                        <input type="text" onChange={this.updateAddress} value={this.state.address} id="address"/>
+                        <label for="address">Address</label>
+                    </div>
+                    <Row>
+                        <Input value={this.state.type} onChange={this.handleType} s={6} type='select' label="Type">
+                            <option value="activity">activity</option>
+                            <option value="restaurant">restaurant</option>
+                            <option value="bar">bar</option>
+                            <option value="nightclub">nightclub</option>
+                            <option value="museum & culture">museum &amp; culture</option>
+                            <option value="hotel">hotel</option>
+                        </Input>
+                    </Row>
+                    <Row>
+                    <div className="input-field col m6">
+                        <textarea className="materialize-textarea" style={{"width": 600}} rows="4" onChange={this.updateDescription} value={this.state.description} id="description"/>
+                        <label for="description">Description</label>
+                    </div>
+                    </Row>
                 <br />
                 <br />
-                <button className="btn btn-default" onClick={this.handleSubmit}>Add Reck</button>
-                <br />
+                <button className="btn btn-default" onClick={this.handleSubmit}>Add Reck</button>&nbsp;&nbsp;&nbsp;
                 <Link to={`/places/${this.props.match.params.cityurl}`}><button className="btn btn-default">Return to Recks</button></ Link>
+                </div>
             </div>
         )
     }
