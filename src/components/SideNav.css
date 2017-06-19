@@ -49,3 +49,12 @@ h3 {
   font-size: 30px;
 }
 
+.sidenav label {
+  color: black;
+}
+
+.sidenav nav {
+  background-color: white;
+  box-shadow: none;
+  line-height: 30px;
+}

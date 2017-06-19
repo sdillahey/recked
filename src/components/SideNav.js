@@ -4,6 +4,7 @@ import './SideNav.css';
 import { MorphIcon } from 'react-svg-buttons';
 import API from '../utils/API';
 import { Link } from 'react-router-dom';
+import { Input } from 'react-materialize';
 
 /*-- needs pagewrapid and containerwrapid if using scale down --*/
 
@@ -41,35 +42,22 @@ class SideNav extends Component {
 
   render () {
     return (
-      <Menu customCrossIcon={<MorphIcon type="crossSparks" size={30} thickness={4} color="#e93737"/>}>
+      <Menu className="sidenav" customCrossIcon={<MorphIcon type="crossSparks" size={30} thickness={4} color="#e93737"/>}>
         <h3>Who's Going?</h3>
-                <span><input className="searchbox" type="checkbox" name="search-1" value="1" onClick={this.toggleCheck}/>
-                &nbsp;&nbsp;Girls' Getaway</span>
-                <span><input className="searchbox" type="checkbox" name="search-1" value="2" onClick={this.toggleCheck}/>
-                &nbsp;&nbsp;Guys' Trip</span>
-                <span><input className="searchbox" type="checkbox" name="search-1" value="3" onClick={this.toggleCheck}/>
-                &nbsp;&nbsp;Squad Deep</span>
-                <span><input className="searchbox" type="checkbox" name="search-1" value="4" onClick={this.toggleCheck}/>
-                &nbsp;&nbsp;Baecation</span>
-                <span><input className="searchbox" type="checkbox" name="search-1" value="5" onClick={this.toggleCheck}/>
-                &nbsp;&nbsp;Riding Solo</span>
+          <Input type="checkbox" className="filled-in" label="Girls' Getaway" value="1" onClick={this.toggleCheck} />
+          <Input type="checkbox" className="filled-in" label="Guys' Trip" value="2" onClick={this.toggleCheck} />
+          <Input type="checkbox" className="filled-in" label="Squad Deep" value="3" onClick={this.toggleCheck} />
+          <Input type="checkbox" className="filled-in" label="Baecation" value="4" onClick={this.toggleCheck} />
+          <Input type="checkbox" className="filled-in" label="Riding Solo" value="5" onClick={this.toggleCheck} />
         <h3>Looking For...</h3>
-                <span><input className="searchbox" type="checkbox" name="search-1" value="6" onClick={this.toggleCheck}/>
-                &nbsp;&nbsp;Adventure</span>
-                <span><input className="searchbox" type="checkbox" name="search-1" value="7" onClick={this.toggleCheck}/>
-                &nbsp;&nbsp;Beach + Chill</span>
-                <span><input className="searchbox" type="checkbox" name="search-1" value="8" onClick={this.toggleCheck}/>
-                &nbsp;&nbsp;Culture</span>
-                <span><input className="searchbox" type="checkbox" name="search-1" value="9" onClick={this.toggleCheck}/>
-                &nbsp;&nbsp;Nightlife</span>
+          <Input type="checkbox" className="filled-in" label="Adventure" value="6" onClick={this.toggleCheck} />
+          <Input type="checkbox" className="filled-in" label="Beach + Chill" value="7" onClick={this.toggleCheck} />
+          <Input type="checkbox" className="filled-in" label="Culture" value="8" onClick={this.toggleCheck} />
+          <Input type="checkbox" className="filled-in" label="Nightlife" value="9" onClick={this.toggleCheck} />
         <h3>Anything Else?</h3>
-                <span><input className="searchbox" type="checkbox" name="search-1" value="A" onClick={this.toggleCheck}/>
-                &nbsp;&nbsp;Long Weekend</span>
-                <span><input className="searchbox" type="checkbox" name="search-1" value="B" onClick={this.toggleCheck}/>
-                &nbsp;&nbsp;On a Budget</span>
-                <span><input className="searchbox" type="checkbox" name="search-1" value="C" onClick={this.toggleCheck}/>
-                &nbsp;&nbsp;Passport Mandatory</span>
-                <br />
+          <Input type="checkbox" className="filled-in" label="Long Weekend" value="A" onClick={this.toggleCheck} />
+          <Input type="checkbox" className="filled-in" label="On a Budget" value="B" onClick={this.toggleCheck} />
+          <Input type="checkbox" className="filled-in" label="Passport Mandatory" value="C" onClick={this.toggleCheck} />
           <div className="btn btn-default btn-md" onClick={ this.filterCities }>&amp; We're Off</div>
       </Menu>
     );
