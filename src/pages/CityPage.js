@@ -28,7 +28,8 @@ class CityPage extends Component {
                         return <p>Loading...</p>
                     } else {
                         return (
-                        <div className="col-md-8 col-md-offset-2">
+                        <div className="row">
+                        <div className="col s10 offset-s1">
                         <h1>{this.props.city.city}</h1>
                         <div className="row">
                             <h3>Take it to the Streets...</h3>
@@ -44,6 +45,7 @@ class CityPage extends Component {
                         {(this.props.user) ? <Link to={`/places/${this.props.city.cityurl}/new`}><button className="btn btn-default citybtn" >Add a Reck</button></Link> :
                         <button className="btn btn-default citybtn" disabled>Add a Reck</button>}
                         </div>
+                    </div>
                     </div>
                         )
                     }
