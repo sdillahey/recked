@@ -37,7 +37,7 @@ class TopNav extends Component {
                                 <input
                                     required 
                                     id="search"
-                                    type="search" 
+                                    type="text" 
                                     onChange={(e) => this.handleSearchChange(e.target.value)} 
                                     value={this.state.search}
                                     />
