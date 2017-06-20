@@ -12,7 +12,9 @@ const LandingPage = (props) => {
         </nav> :
     <nav className="main-nav">
         <ul className="right">
-            <li><a className="stampnav" href="/auth/google">Login</a></li>
+            <li><a className="stampnav" href="/auth/google">
+                <img src="./img/stamp.png"/>
+            </a></li>
         </ul>
     </nav>
     return (
@@ -22,9 +24,6 @@ const LandingPage = (props) => {
             <Link to="/">
                 <div className="landing-title">
                     recked
-                </div>
-                <div className="stamp">
-                    <img src="https://i.imgur.com/r0FYd6y.png" height="110" width="110"/>
                 </div>
             </Link>
         </div>

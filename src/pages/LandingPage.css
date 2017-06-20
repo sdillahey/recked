@@ -17,27 +17,12 @@
   box-shadow: none;
 }
 
+.main-nav a {
+    color: black;
+}
 
 .stampnav {
-  color: black;
   padding: 20px;
-  margin-top: 10px;
-  margin-right: 15px;
-  line-height: 50px;
-  font-size: 28px;
-  font-family: 'Hind', sans-serif;
 }
 
-.stamp {
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: -1;
-    padding: 5px;
-}
 
-@media (max-width: 767px) { 
-    .hidden-tablet {
-        display:none;
-    }
-}
