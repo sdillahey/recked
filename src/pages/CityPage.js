@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReckDisplay from '../components/ReckDisplay';
+import InstagramFeed from '../components/InstagramFeed';
 import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import ReckForm from './ReckForm';
 
@@ -29,23 +30,24 @@ class CityPage extends Component {
                     } else {
                         return (
                         <div className="row">
-                        <div className="col s10 offset-s1">
-                        <h1>{this.props.city.city}</h1>
-                        <div className="row">
-                            <h3>Take it to the Streets...</h3>
-                            <ReckDisplay 
-                                user={this.props.user}
-                                recks={this.props.city.data.recks}
-                                city={this.props.city}
-                                setFetchedCity={this.props.setFetchedCity}
-                                {...props}/>
-                        </div>
-                        <div className="city-buttons">
-                        <Link to={'/places'}><button className="btn btn-default citybtn">Back to Search</button></Link>
-                        {(this.props.user) ? <Link to={`/places/${this.props.city.cityurl}/new`}><button className="btn btn-default citybtn" >Add a Reck</button></Link> :
-                        <button className="btn btn-default citybtn" disabled>Add a Reck</button>}
-                        </div>
-                    </div>
+                            <h1 className="col s12">{this.props.city.city}</h1>
+                            <div className="row">
+                                <InstagramFeed />
+                                <div className="col s12 m10 offset-m1">
+                                    <h3>Take it to the Streets...</h3>
+                                    <ReckDisplay 
+                                        user={this.props.user}
+                                        recks={this.props.city.data.recks}
+                                        city={this.props.city}
+                                        setFetchedCity={this.props.setFetchedCity}
+                                        {...props}/>
+                                    <div className="city-buttons">
+                                        <Link to={'/places'}><button className="btn btn-default citybtn">Back to Search</button></Link>
+                                        {(this.props.user) ? <Link to={`/places/${this.props.city.cityurl}/new`}><button className="btn btn-default citybtn" >Add a Reck</button></Link> :
+                                        <button className="btn btn-default citybtn" disabled>Add a Reck</button>}
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                         )
                     }
