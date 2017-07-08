@@ -10,21 +10,27 @@ class InstagramFeed extends Component {
 
     componentDidMount() {
         var photoData = [];
+        pictures.forEach(picture => {
             $.ajax({
             type: "GET",
             dataType: "jsonp",
             cache: false,
-            url: 'http://www.instagram.com/p/BTR0SeBDaAg/',
+            url: `https://api.instagram.com/oembed/?url=${picture}`,
             success: function(data) {
-                photoData.push(data);
-                console.log(photoData);
+                photoData.push(data.html);
                 }
             })
+        })
+
     }
 
     render() {
         return (
-            <div className="col s12 m1">Instagram Feed</div>
+            <div className="col s12 m1">
+                {this.props.photos.map(photo => (
+                    {photo}
+                ))}
+            </div>
 
         );
     }
